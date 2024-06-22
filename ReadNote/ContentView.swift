@@ -2,20 +2,21 @@
 //  ContentView.swift
 //  ReadNote
 //
-//  Created by Mahmut Özkan on 11.06.2024.
+//  Created by Mahmut Özkan on 19.06.2024.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var authManager: AuthManager
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group{
+            if authManager.isUserSignedIn{
+                MainView()
+            }else{
+                SignIn()
+            }
         }
-        .padding()
     }
 }
 
